@@ -26,6 +26,29 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/",(req,res)=>{
+  res.send(
+    {
+      routes :[
+        {
+          Home_Route : "/"
+        },
+        {
+          api_products : "/api/products"
+        },
+        {
+          photo_upload : "/api/upload"
+        },
+        {
+          order_route : "/api/orders"
+        },
+        {
+          user_routes : "/api/users"
+        }
+      ]
+    }
+  )
+})
 
 app.get("/api/keys/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
@@ -54,3 +77,7 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`serve at http://localhost:${port}`);
 });
+
+
+
+
